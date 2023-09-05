@@ -1,6 +1,7 @@
 import { useRef, useState } from "react"
 import axiosClient from "../../axiosClient"
 import { useStateContext } from "../../context/ContextProvider"
+import { Link } from "react-router-dom"
 
 const Signup = ()=>{
     // refs of input
@@ -35,22 +36,36 @@ axiosClient.post('/signup',payload).then(({data})=>{
 console.log(payload)
     }
     return (
-        <div>
-            <form onSubmit={onSubmit}>
-                {errors&&<div> 
-                    {Object.keys(errors).map(key=>(
+        <div className="login-signup-form animated fadeInDown">
+        <div className="form">
+            {errors && (
+                <div className="alert">
+                    {Object.keys(errors).map((key) => (
                         <p key={key}>{errors[key][0]}</p>
                     ))}
-                    </div>}
-                <input ref={nameRef} type="text" placeholder="username"/>
-                <br/><br/>
-                <input ref={emailRef} type="email" placeholder="email"/>   <br/><br/>
-                <input ref={passwordRef} type="password" placeholder="password"/>   <br/><br/>
-                <input ref={passwordConfirmationRef} type="password" placeholder="password confirmation"/>   <br/><br/>
-
-                <button>register</button>
+                </div>
+            )}
+            <h3 className="title">register</h3>
+            <form onSubmit={onSubmit}>
+                <input ref={nameRef} placeholder="full name" />
+                <input ref={emailRef} type="email" placeholder="email" />
+                <input
+                    ref={passwordRef}
+                    type="password"
+                    placeholder="password"
+                />
+                <input
+                    type="password"
+                    placeholder="password_confirmation"
+                    ref={passwordConfirmationRef}
+                />
+                <button className="btn btn-block">registerd</button>
+                <p className="message">
+                    Already registered?<Link to="/login">Login</Link>
+                </p>
             </form>
         </div>
+    </div>
     )
 }
 export default Signup
