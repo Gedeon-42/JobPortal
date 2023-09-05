@@ -2,21 +2,52 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SignupRequest;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
     //
-    public function Signup(SignupRequest $request ){
+    public function signup(SignupRequest $request ){
+        $data = $request->validated();
+        /** @var \APP\Models\User $user */
+
+      $user=User::create([
+            'name'=>$data['name'],
+            'email'=>$data['email'],
+            'password'=>bcrypt($data['password'])
+        ]);
+  $token = $user->createToken('main')->plainTextToken;
+
+ return response(compact('user','token'));
+ return response('',204);
+
     }
 
-    public function Login(LoginRequest $request){
+    public function login(LoginRequest $request){
+        $credentials = $request->validated();
 
+        if(!Auth::attempt($credentials)){
+return response([
+    'message'=>'provide email or password does not exist'
+],422);
+ }
+ /** @var User $user */
+$user =Auth::user();
+  
+ $token= $user->createToken('main')->plainTextToken;
+
+ return response (compact('user','token'));
     }
-    public function Logout(){
 
+
+    public function logout( Request $request){
+        /** @var User $user */
+    $user = $request->user();
+    $user->currentAccessToken()->delete();
     }
 }

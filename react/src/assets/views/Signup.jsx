@@ -1,4 +1,4 @@
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import axiosClient from "../../axiosClient"
 import { useStateContext } from "../../context/ContextProvider"
 
@@ -8,6 +8,7 @@ const Signup = ()=>{
     const emailRef = useRef()
     const passwordRef=useRef()
     const passwordConfirmationRef=useRef()
+    const [errors,setErrors]=useState()
 
 // importing context
 const{setUser,setToken}=useStateContext()
@@ -17,8 +18,8 @@ ev.preventDefault()
 const payload={
     name : nameRef.current.value,
     email:emailRef.current.value,
-    passwordRef:passwordRef.current.value,
-    password_Confirmation:passwordConfirmationRef.current.value
+    password:passwordRef.current.value,
+    password_confirmation:passwordConfirmationRef.current.value
 }
 
 axiosClient.post('/signup',payload).then(({data})=>{
@@ -28,6 +29,7 @@ axiosClient.post('/signup',payload).then(({data})=>{
     const response = err.response
     if(response &&response.status === 422){
         console.log(response.data.errors)
+        setErrors(response.data.errors)
     }
 })
 console.log(payload)
@@ -35,10 +37,17 @@ console.log(payload)
     return (
         <div>
             <form onSubmit={onSubmit}>
+                {errors&&<div> 
+                    {Object.keys(errors).map(key=>(
+                        <p key={key}>{errors[key][0]}</p>
+                    ))}
+                    </div>}
                 <input ref={nameRef} type="text" placeholder="username"/>
-                <input ref={emailRef} type="email" placeholder="email"/>
-                <input ref={passwordRef} type="password" placeholder="password"/>
-                <input ref={passwordConfirmationRef} type="password" placeholder="password confirmation"/>
+                <br/><br/>
+                <input ref={emailRef} type="email" placeholder="email"/>   <br/><br/>
+                <input ref={passwordRef} type="password" placeholder="password"/>   <br/><br/>
+                <input ref={passwordConfirmationRef} type="password" placeholder="password confirmation"/>   <br/><br/>
+
                 <button>register</button>
             </form>
         </div>
