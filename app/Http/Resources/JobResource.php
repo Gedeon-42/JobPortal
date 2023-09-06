@@ -18,16 +18,13 @@ class JobResource extends JsonResource
         return [
             'id'=>$this->id,
          'title'=>$this->title,
-         'slug'=>$this->slug,
           'description'=>$this->description,
-           'image_url'=>$this->image?URL::to($this->image):null,
-            'meta_title'=>$this->meta_title,
-             'meta_description'=>$this->meta_description,
-              'meta_keyword'=>$this->meta_keyword,
-              'status'=>!!$this->status,
-               'created_by'=>$this->created_by,
-               'created_at'=>$this->created_at,
-               'updated_at'=>$this->updated_at
+           'image_url'=>$this->logo?URL::to($this->logo):null,
+             'location'=>$this->location,
+              'website'=>$this->website,
+              'tags'=>!!$this->tags,
+               'company'=>$this->company,
+               'email'=>$this->email
         ];
     }
 }

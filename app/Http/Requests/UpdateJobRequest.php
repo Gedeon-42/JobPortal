@@ -25,15 +25,15 @@ class UpdateJobRequest extends FormRequest
     {
         return [
             //
-            'title'=>'string',
-            'slug'=>'string',
-            'description'=>'string',
-            'image'=>'nullable',
-            'meta_title'=>'string',
-            'meta_description'=>'string',
-            'meta_keyword'=>'string',
-            'status'=>'nullable|boolean',
-            'created_by'=>'nullable'
+            'title'=>'required|string',
+            'tags'=>'string',
+            'description'=>'string|required',
+            'logo'=>'string|nullable',
+            'website'=>'required|string',
+            'location'=>'required|string',
+            'email'=>'required|email',
+            'company'=>'required',
+
         ];
     }
 }

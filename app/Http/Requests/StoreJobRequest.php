@@ -26,14 +26,14 @@ class StoreJobRequest extends FormRequest
         return [
             //
             'title'=>'required|string',
-            'slug'=>'string',
+            'tags'=>'string',
             'description'=>'string|required',
-            'image'=>'string|nullable',
-            'meta_title'=>'required|string',
-            'meta_description'=>'required|string',
-            'meta_keyword'=>'required|string',
-            'status'=>'nullable|boolean',
-            'created_by'=>'nullable|string'
+            'logo'=>'string|nullable',
+            'website'=>'required|string',
+            'location'=>'required|string',
+            'email'=>'required|email',
+            'company'=>'required',
+
         ];
     }
 }

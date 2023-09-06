@@ -4,27 +4,27 @@ import axiosClient from "../../axiosClient";
 
 const Job = () => {
     const [loading, setLoading] = useState(false);
-    const [posts, setPosts] = useState([]);
+    const [jobs, setJobs] = useState([]);
     useEffect(() => {
-        getPosts();
+        getJobs();
     }, []);
-    const getPosts = () => {
+    const getJobs = () => {
         axiosClient
-            .get("posts")
+            .get("jobs")
             .then(({ data }) => {
-                setPosts(data.data);
+                setJobs(data.data);
                 setLoading(false);
             })
             .catch(() => {
                 setLoading(true);
             });
     };
-    const ondelete = (post) => {
+    const ondelete = (job) => {
         if (!window.confirm("are you sure you need to delete user")) {
             return;
         }
-        axiosClient.delete(`/posts/${post.id}`).then(() => {
-            getPosts();
+        axiosClient.delete(`/jobs/${job.id}`).then(() => {
+            getJobs();
         });
     };
 
@@ -41,7 +41,7 @@ const Job = () => {
                 <h3>posts</h3>
 
                 <Link to="/jobs/new" className="btn btn-edit">
-                    add post
+                    add jobs
                 </Link>
             </div>
 
@@ -51,10 +51,11 @@ const Job = () => {
                         <tr>
                             <th>id</th>
                             <th>image</th>
-                            <th>name</th>
-                            <th>status</th>
-                            <th>author</th>
-                            <th>created_at</th>
+                            <th>title</th>
+                            <th>location</th>
+                            <th>company</th>
+                            <th>website</th>
+                            <th>email</th>
                             <th>action</th>
                         </tr>
                     </thead>
@@ -70,13 +71,13 @@ const Job = () => {
                     </tbody>
                     {!loading && (
                         <tbody>
-                            {posts.map((post) => (
-                                <tr key={post.id}>
-                                    <td>{post.id}</td>
+                            {jobs.map((job) => (
+                                <tr key={job.id}>
+                                    <td>{job.id}</td>
                                     <td>
-                                        {post.image_url ? (
+                                        {job.image_url ? (
                                             <img
-                                                src={post.image_url}
+                                                src={job.image_url}
                                                 alt=""
                                                 style={{
                                                     width: "40px",
@@ -86,7 +87,7 @@ const Job = () => {
                                             />
                                         ) : (
                                             <img
-                                                src={avatar}
+                                                src=""
                                                 style={{
                                                     width: "50px",
                                                     height: "50px",
@@ -95,37 +96,27 @@ const Job = () => {
                                             />
                                         )}
                                     </td>
-                                    <td>{post.title}</td>
-                                    <td>
-                                        <p
-                                            className={
-                                                post.status
-                                                    ? "pending"
-                                                    : "notpending"
-                                            }
-                                        >
-                                            {post.status
-                                                ? "active"
-                                                : "notactive"}
-                                        </p>
-                                    </td>
+                                    
                                     {/* <td
                                         dangerouslySetInnerHTML={{
                                             __html: post.description,
                                         }}
                                     ></td> */}
-                                    <td>{post.created_by}</td>
-                                    <td>{post.created_at}</td>
+                                    <td>{job.title}</td>
+                                    <td>{job.location}</td>
+                                    <td>{job.company}</td>
+                                    <td>{job.website}</td>
+                                    <td>{job.email}</td>
                                     <td>
                                         <Link
                                             className="btn btn-edit"
-                                            to={"/admin/post/" + post.id}
+                                            to={"/job/" + job.id}
                                         >
                                             edit
                                         </Link>
                                         &nbsp;
                                         <button
-                                            onClick={(e) => ondelete(post)}
+                                            onClick={(e) => ondelete(job)}
                                             className="btn-delete"
                                         >
                                             delete

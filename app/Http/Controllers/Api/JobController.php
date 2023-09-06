@@ -1,17 +1,18 @@
 <?php
 
 namespace App\Http\Controllers\Api;
+use App\Models\Job;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Models\Job;
+use App\Http\Resources\JobResource;
 
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 use App\Http\Requests\StoreJobRequest;
 use App\Http\Requests\UpdateJobRequest;
-use Illuminate\Support\Facades\File;
 
 
-class PostController extends Controller
+class JobController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,7 +23,7 @@ class PostController extends Controller
     public function index()
     {
         //
-        return JobResource::collection(Post::query()->orderBy('id','desc')->paginate(10));
+        return JobResource::collection(Job::query()->orderBy('id','desc')->paginate(10));
         
     
     }
@@ -39,9 +40,9 @@ class PostController extends Controller
         $data = $request->validated();
 
         // check if image was give and save in local system file
-        if(isset($data['image'])){
-            $relativePath = $this->saveImage($data['image']);
-            $data['image']=$relativePath;
+        if(isset($data['logo'])){
+            $relativePath = $this->saveImage($data['logo']);
+            $data['logo']=$relativePath;
         }
         $job = Job::create($data);
         return response(new JobResource($job),201);
@@ -56,7 +57,7 @@ class PostController extends Controller
     public function show(Job $job)
     {
         //
-        return new PostResource($job);
+        return new JobResource($job);
     }
 
     /**
@@ -73,12 +74,12 @@ class PostController extends Controller
         // if($request->hasFile('logo')){
         //     $data['image'] = $request->file('image')->store('photos','public');
         //    }
-        if(isset($data['image'])){
-            $relativePath = $this->saveImage($data['image']);
-            $data['image']=$relativePath;
+        if(isset($data['logo'])){
+            $relativePath = $this->saveImage($data['logo']);
+            $data['logo']=$relativePath;
             // if there is old image delete it
-            if($job->image){
-                $absolutepath = public_path($job->image);
+            if($job->logo){
+                $absolutepath = public_path($job->logo);
                 File::delete($absolutepath);
             }
         }
@@ -125,7 +126,7 @@ if(preg_match('/^data:image\/(\w+);base64,/',$image,$type)){
 else{
     throw new \Exception('did not match URI with image data');
 }
-$dir = 'Post_img/';
+$dir = 'Company_img/';
 $file = Str::random().'.'.$type;
 $absolutepath = public_path($dir);
 $relativePath = $dir . $file;

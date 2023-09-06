@@ -6,6 +6,7 @@ use App\Http\Controllers\JobController;
 use App\Http\Controllers\LoginController;
 
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ApplicantController;
 use App\Http\Controllers\Admin\AdminController;
 
 /*
@@ -32,6 +33,8 @@ Route::post('/Login',[LoginController::class,'store'])->name('auth.Login');
 
 Route::post('/Logout',[RegisterController::class,'logout'])->name('auth.logout');
 
+ Route::get('/Application',[ApplicantController::class,'index'])->name('/application');
+ Route::post('/Application',[ApplicantController::class,'store'])->name('/listings');
 
 Route::post('/listings',[JobController::class,'store'])->name('/listings');
 Route::get('/listings/manage',[JobController::class,'manage']);

@@ -7,17 +7,17 @@ const JobForm = () => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [errors, setErrors] = useState(null);
-    const [posts, setposts] = useState({
+    const [jobs, setjobs] = useState({
         id: null,
         title: "",
-        image: null,
+        logo: null,
         description: "",
-        meta_title: "",
-        meta_description: "",
-        meta_keyword: "",
+        location: "",
+        company: "",
+        website: "",
         image_url: null,
-        status: false,
-        created_by: "",
+        tags: false,
+        email: "",
     });
     const descriptionRef = useRef();
     const config = {
@@ -28,9 +28,9 @@ const JobForm = () => {
         useEffect(() => {
             setLoading(true);
             axiosClient
-                .get(`/posts/${id}`)
+                .get(`/jobss/${id}`)
                 .then(({ data }) => {
-                    setposts(data.data);
+                    setjobs(data.data);
                     setLoading(false);
                 })
                 .catch(() => {
@@ -44,9 +44,9 @@ const JobForm = () => {
         const file = ev.target.files[0];
         const reader = new FileReader();
         reader.onload = () => {
-            setposts({
-                ...posts,
-                image: file,
+            setjobs({
+                ...jobs,
+                logo: file,
                 image_url: reader.result,
             });
             ev.target.value = "";
@@ -58,17 +58,17 @@ const JobForm = () => {
     const onsubmit = (e) => {
         e.preventDefault();
         // console.log(employees);
-        const payload = { ...posts, description: descriptionRef.current.value };
-        if (payload.image) {
-            payload.image = payload.image_url;
+        const payload = { ...jobs, description: descriptionRef.current.value };
+        if (payload.logo) {
+            payload.logo = payload.image_url;
         }
         delete payload.image_url;
         //let res = null;
-        if (posts.id) {
+        if (jobs.id) {
             axiosClient
-                .put(`/posts/${posts.id}`, payload)
+                .put(`/jobs/${jobs.id}`, payload)
                 .then(() => {
-                    navigate("/post");
+                    navigate("/jobs");
                 })
                 .catch((err) => {
                     const response = err.response;
@@ -83,7 +83,7 @@ const JobForm = () => {
                     // set notification
                     //setNotification("user created successfully");
                     // redirect user
-                    navigate("/post");
+                    navigate("/jobs");
                 })
                 .catch((err) => {
                     const response = err.response;
@@ -95,7 +95,7 @@ const JobForm = () => {
     };
     return (
         <div>
-            {!id ? <h3>add new post</h3> : <h3>update:{posts.title}</h3>}
+            {!id ? <h3>add new post</h3> : <h3>update:{jobs.title}</h3>}
             <div className="card animated fadeInDown ">
                 {loading && <p>loading...</p>}
                 {errors && (
@@ -108,49 +108,40 @@ const JobForm = () => {
                 {!loading && (
                     <form method="POST" onSubmit={onsubmit}>
                         <input
-                            placeholder="Post title"
-                            value={posts.title}
+                            placeholder="job title"
+                            value={jobs.title}
                             onChange={(ev) =>
-                                setposts({
-                                    ...posts,
+                                setjobs({
+                                    ...jobs,
                                     title: ev.target.value,
                                 })
                             }
                         />
+                
                         <input
-                            placeholder="slug"
-                            value={posts.slug}
+                            placeholder="comapny"
+                            value={jobs.company}
                             onChange={(ev) =>
-                                setposts({
-                                    ...posts,
-                                    slug: ev.target.value,
+                                setjobs({
+                                    ...jobs,
+                                    company: ev.target.value,
                                 })
                             }
                         />
                         <input
-                            placeholder="meta title"
-                            value={posts.meta_title}
+                            placeholder="location"
+                            value={jobs.location}
                             onChange={(ev) =>
-                                setposts({
-                                    ...posts,
-                                    meta_title: ev.target.value,
-                                })
-                            }
-                        />
-                        <input
-                            placeholder="meta description"
-                            value={posts.meta_description}
-                            onChange={(ev) =>
-                                setposts({
-                                    ...posts,
-                                    meta_description: ev.target.value,
+                                setjobs({
+                                    ...jobs,
+                                    location: ev.target.value,
                                 })
                             }
                         />
                         <div className="img">
-                            {posts.image_url && (
+                            {jobs.image_url && (
                                 <img
-                                    src={posts.image_url}
+                                    src={jobs.image_url}
                                     style={{
                                         width: "35px",
                                         height: "35px",
@@ -159,7 +150,7 @@ const JobForm = () => {
                                     alt=""
                                 />
                             )}
-                            {!posts.image_url && (
+                            {!jobs.image_url && (
                                 <img
                                     src=''
                                     style={{
@@ -178,39 +169,39 @@ const JobForm = () => {
                         </div>
                         {
                             <input
-                                placeholder="meta keword"
-                                value={posts.meta_keyword}
+                                placeholder="email"
+                                value={jobs.email}
                                 onChange={(ev) =>
-                                    setposts({
-                                        ...posts,
-                                        meta_keyword: ev.target.value,
+                                    setjobs({
+                                        ...jobs,
+                                        email: ev.target.value,
                                     })
                                 }
                             />
                         }
-                        <input
-                            type="checkbox"
-                            checked={posts.status}
-                            onChange={(ev) =>
-                                setposts({
-                                    ...posts,
-                                    status: ev.target.checked,
-                                })
-                            }
-                        />
-                        status
+                    
                         <JoditEditor
-                            value={`${posts.description}`}
+                            value={`${jobs.description}`}
                             ref={descriptionRef}
                             config={config}
                         />
                         <input
-                            placeholder=" created by"
-                            value={posts.created_by}
+                            placeholder=" tags"
+                            value={jobs.tags}
                             onChange={(ev) =>
-                                setposts({
-                                    ...posts,
-                                    created_by: ev.target.value,
+                                setjobs({
+                                    ...jobs,
+                                    tags: ev.target.value,
+                                })
+                            }
+                        />
+                          <input
+                            placeholder=" website"
+                            value={jobs.website}
+                            onChange={(ev) =>
+                                setjobs({
+                                    ...jobs,
+                                    website: ev.target.value,
                                 })
                             }
                         />
