@@ -1,18 +1,26 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
+        <h2>Hey recruiters tells type of employers</h2>
         <div class="create-form">
-            <form action="application" method="post" enctype="multipart/form-data">
+            <form action="/employer/application" method="post" enctype="multipart/form-data">
              @csrf
+             <label for="title">company name:</label><br>
+            <input type="text" class="@error('names') error_border @enderror" name="company" value="{{ old('company') }}" placeholder="company name" ><br>
+            @error('company')
+                <p class="errors">
+                    {{ $message }}
+                </p>
+            @enderror
             <label for="title">job title:</label><br>
-            <input type="text" class="@error('names') error_border @enderror" name="names" value="{{ old('names') }}" placeholder="title" ><br>
+            <input type="text" class="@error('names') error_border @enderror" name="names" value="{{ old('names') }}" placeholder=" job title" ><br>
             @error('names')
                 <p class="errors">
                     {{ $message }}
                 </p>
             @enderror
             <label for="company">telephone:</label><br>
-            <input type="number" class="@error('telephone') error_border @enderror" name="telephone" value="{{ old('telephone') }}" placeholder="company"><br>
+            <input type="number" class="@error('telephone') error_border @enderror" name="telephone" value="{{ old('telephone') }}" placeholder="telepone"><br>
             @error('telephone')
             <p class="errors">
                 {{ $message }}
@@ -32,7 +40,14 @@
                 {{ $message }}
             </p>
         @enderror
-            <label for="website"> social media</label><br>
+        <label for="website"> number of post</label><br>
+            <input type="number" class="@error('post') error_border @enderror" name="post" value="{{ old('post') }}" placeholder="number of post"><br>
+            @error('post')
+            <p class="errors">
+                {{ $message }}
+            </p>
+        @enderror
+            <label for="website"> company website</label><br>
             <input type="text" class="@error('website') error_border @enderror" name="website" value="{{ old('website') }}" placeholder="website for application"><br>
             @error('website')
             <p class="errors">

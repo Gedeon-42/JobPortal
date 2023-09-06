@@ -3,7 +3,7 @@
 <section class="main-content">
 @include('partials._search')
 <div class="gig-content">
-    <img src="{{ asset('storage/'.$listing->logo)}}" class="gig-photo" alt="" />
+    <!-- <img src="{{$listing->logo}}" class="gig-photo" alt="" /> -->
     <div class="gig-desc">
       <h3><a href="/listings/{{ $listing['id'] }}">{{ $listing->title }}</a></h3>
       <h1>{{ $listing->company }}</h1>
@@ -21,8 +21,8 @@
       <p>{{ $listing->description }}</p>
     </div>
     <div class="contact-desc">
-      <a href="mailto:{{ $listing->email }}" class="mail-link">contact employer</a>
-      <a href="{{ $listing->website }}" class="website-link">apply</a>
+      <a href="/" class="mail-link">back</a>
+      <a href="/application" class="website-link">apply</a>
     </div>
   </div>
 </section>

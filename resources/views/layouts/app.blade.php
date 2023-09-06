@@ -12,12 +12,12 @@
   <body>
     <nav>
         <div class="logo">
-          <h3> Erekenajobs</h3>
+          <h3>umurimo </h3>
         </div>
         <div class="navItem">
           <ul>
             <li><a href="/"> home</a></li>
-            <li><a href="">about</a></li>
+            <li><a href="">Employer</a></li>
             <li><a href="">jobs</a></li>
              @auth
              <li class="username-li">{{ auth()->user()->name }}</li>

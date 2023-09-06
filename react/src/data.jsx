@@ -32,8 +32,8 @@ export const menu =[
           },
           {
             id: 3,
-            title: "Orders",
-            url: "/orders",
+            title: "Employers",
+            url: "/employers",
             icon: <FaDoorOpen/>,
           },
           {

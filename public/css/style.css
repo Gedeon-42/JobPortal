@@ -162,15 +162,17 @@ nav {
 .gig-desc h3 {
     text-transform: capitalize;
     font-size: 15px;
+    color: rgba(0, 0, 0, 0.8);
     margin-bottom: 8px;
 }
 .gig-desc h3 a {
-    color: #111111;
+    color: dodgerblue;
     text-decoration: none;
 }
 .gig-desc h1 {
     text-transform: capitalize;
-    font-size: 18px;
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.8);
 }
 .gig-tags {
     margin-top: 12px;
@@ -189,8 +191,7 @@ nav {
     margin: 7px;
     padding: 2px 7px;
     text-decoration: none;
-    color: white;
-    background: #111111;
+    color: rgba(0, 0, 0, 0.8);
     border-radius: 12px;
     text-transform: capitalize;
 }
@@ -202,7 +203,7 @@ nav {
     margin: 7px;
     text-decoration: none;
     text-transform: capitalize;
-    color: black;
+    font-size: 14px;
 }
 .text-center {
     text-align: center;
@@ -211,8 +212,9 @@ nav {
 }
 .job-desc {
     font-size: 18px;
-    text-align: center;
     margin: 30px;
+    padding: 20px 50px;
+    border: 1px solid black;
 }
 .contact-desc {
     margin: 12px;
@@ -221,18 +223,18 @@ nav {
 .contact-desc .mail-link {
     margin: 12px;
     text-decoration: none;
-    background-color: darkblue;
-    padding: 7px;
-    border-radius: 12px;
+    background-color: dodgerblue;
+    padding: 10px;
+    border-radius: 8px;
     color: white;
 }
 .contact-desc .website-link {
     margin: 12px;
     text-decoration: none;
     background-color: #111111;
-    padding: 7px;
+    padding: 10px;
     color: white;
-    border-radius: 12px;
+    border-radius: 8px;
 }
 @media screen and (max-width: 900px) {
     * {
