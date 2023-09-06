@@ -1,0 +1,583 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "poppins", sans-serif;
+}
+body {
+    background-color: #f6f6f6;
+}
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-left: 30px;
+    padding-right: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1020;
+    color: white;
+    background: #fff;
+    position: sticky;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+}
+.logo h3 {
+    text-transform: capitalize;
+    color: black;
+}
+.navItem {
+    list-style: none;
+}
+.navItem ul li {
+    display: inline-block;
+    padding: 16px;
+    font-weight: 500;
+    font-size: 18px;
+    text-transform: capitalize;
+}
+.navItem ul li a {
+    text-decoration: none;
+    color: black;
+    position: relative;
+}
+.navItem ul li a::after {
+    content: "";
+    width: 0;
+    background: #ff004f;
+    height: 3px;
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    transition: 0.5s;
+}
+.navItem ul li a:hover::after {
+    width: 100%;
+}
+.username-li {
+    color: black;
+    position: relative;
+}
+.username-li::after {
+    content: "";
+    width: 0;
+    height: 3px;
+    position: absolute;
+    left: 0;
+    bottom: 9px;
+    background: #ff004f;
+    transition: 0.5s;
+}
+.username-li:hover::after {
+    width: 100%;
+}
+.logout-btn {
+    padding: 12px;
+    border: none;
+    color: black;
+    text-transform: capitalize;
+    font-size: 16px;
+    font-weight: 500;
+    background: inherit;
+}
+.menu {
+    font-size: 20px;
+    color: black;
+    display: none;
+}
+.thumbnail {
+    background-color: powderblue;
+    text-align: center;
+    height: 25vh;
+    padding-top: 12px;
+}
+.thumbnail-desc h1 {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 22px;
+}
+.thumbnail-desc p {
+    text-transform: capitalize;
+    font-size: 17px;
+    font-weight: bold;
+    padding-top: 12px;
+}
+.thumbnail-desc button {
+    text-transform: capitalize;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 12px;
+    margin: 12px;
+    border-radius: 12px;
+    outline: 0;
+    border: 1px solid #e6e6e6;
+    background: #080808;
+    color: white;
+}
+.main-content {
+    padding: 14px 20px;
+}
+.search-bar > form > input {
+    width: 90%;
+    padding: 12px;
+    outline: 0;
+    border: 2px solid #e6e6e6;
+}
+.search-bar > form > button {
+    padding: 12px;
+    color: white;
+    font-weight: bold;
+    background-color: #111111;
+    text-transform: capitalize;
+    border: 0;
+}
+.gig-container {
+    display: grid;
+    grid-column-gap: 20px;
+    grid-row-gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    margin-top: 12px;
+}
+.gig-content {
+    position: relative;
+    border: 0.1px solid lightgrey;
+    border-radius: 12px;
+    display: flex;
+    padding: 32px 12px;
+}
+.gig-photo {
+    width: 120px;
+    height: 120px;
+    transition: transform 0.5s;
+}
+.gig-photo:hover {
+    transform: scale(1.2);
+}
+.gig-desc {
+    margin-left: 12px;
+}
+.gig-desc h3 {
+    text-transform: capitalize;
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+.gig-desc h3 a {
+    color: #111111;
+    text-decoration: none;
+}
+.gig-desc h1 {
+    text-transform: capitalize;
+    font-size: 18px;
+}
+.gig-tags {
+    margin-top: 12px;
+    transition: transform 0.5s;
+}
+.gig-tags:hover {
+    transform: translateY(-2px);
+}
+.gig-tags ul {
+    list-style-type: none;
+}
+.gig-tags ul li {
+    display: inline-block;
+}
+.gig-tags ul li a {
+    margin: 7px;
+    padding: 2px 7px;
+    text-decoration: none;
+    color: white;
+    background: #111111;
+    border-radius: 12px;
+    text-transform: capitalize;
+}
+
+.location {
+    margin-top: 12px;
+}
+.location a {
+    margin: 7px;
+    text-decoration: none;
+    text-transform: capitalize;
+    color: black;
+}
+.text-center {
+    text-align: center;
+    text-transform: capitalize;
+    margin-top: 12px;
+}
+.job-desc {
+    font-size: 18px;
+    text-align: center;
+    margin: 30px;
+}
+.contact-desc {
+    margin: 12px;
+    text-align: center;
+}
+.contact-desc .mail-link {
+    margin: 12px;
+    text-decoration: none;
+    background-color: darkblue;
+    padding: 7px;
+    border-radius: 12px;
+    color: white;
+}
+.contact-desc .website-link {
+    margin: 12px;
+    text-decoration: none;
+    background-color: #111111;
+    padding: 7px;
+    color: white;
+    border-radius: 12px;
+}
+@media screen and (max-width: 900px) {
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .logo {
+        display: none;
+    }
+    nav {
+        background: black;
+        height: 50px;
+    }
+    .navItem {
+        display: none;
+    }
+    .menu {
+        display: block;
+        color: white !important;
+        font-size: 20px;
+    }
+    .search-bar > form > input {
+        width: 300px;
+        padding: 12px;
+        margin-left: 20px;
+        outline: 0;
+        border: 1px solid #e6e6e6;
+    }
+    .gig-container {
+        display: block;
+        margin-top: 12px;
+        padding: 2px;
+    }
+    .gig-photo {
+        width: 200px;
+    }
+    .gig-content {
+        border: 0.1px solid lightgrey;
+        border-radius: 12px;
+        display: block;
+        padding-left: 80px;
+        margin-top: 12px;
+    }
+    .container {
+        padding: 2px !important;
+    }
+    .Signupform-container {
+        border: 0.5px solid grey;
+        width: 80% !important;
+        border-radius: 12px;
+        margin: 20px 50px !important;
+    }
+    .form input {
+        padding: 12px !important;
+        width: 100% !important;
+        border-radius: 5px;
+    }
+    .form button {
+        padding: 12px;
+        margin: 12px;
+        width: 100% !important;
+        text-align: center;
+        text-transform: capitalize;
+        background-color: black !important;
+        border-radius: 10px;
+    }
+    .loginform-container {
+        width: 80% !important;
+        margin: 20px 50px !important;
+    }
+    .create-form {
+        border: 1px solid lightgrey;
+        width: 80% !important;
+        margin: 10px 50px !important;
+        border-radius: 7px;
+        padding-left: 20px !important;
+        padding-top: 12px;
+        background-color: lightgrey;
+    }
+    .create-form > form > input {
+        margin: 5px;
+        padding: 7px;
+        border-radius: 6px;
+        outline: none;
+        width: 300px !important;
+    }
+    aside {
+        display: none;
+    }
+    #header {
+        width: 100% !important;
+        margin: 12px !important;
+    }
+    .table-container {
+        margin: 12px !important;
+        padding: 16px 5px !important;
+        width: 100% !important;
+    }
+    table {
+        width: 80% !important;
+        border-collapse: collapse;
+        border-spacing: 0;
+        margin-top: 15px !important;
+    }
+}
+footer {
+    background-color: #111111;
+    width: 100%;
+    color: white;
+    text-transform: capitalize;
+    height: 50px;
+    padding: 12px;
+    text-align: center;
+}
+.copyright {
+    text-align: center;
+}
+.edit {
+    text-decoration: none;
+    text-transform: capitalize;
+    color: white;
+    background: dodgerblue;
+    border-radius: 6px;
+    margin-top: 12px;
+    padding: 7px;
+}
+.container {
+    padding: 10px 30px;
+    background-color: azure;
+}
+.Signupform-container {
+    border: 0.5px solid grey;
+    width: 500px;
+    margin-left: 30%;
+    border-radius: 12px;
+    background-color: cadetblue;
+    padding: 20px 50px;
+}
+.form input {
+    padding: 12px;
+    margin: 12px;
+    width: 350px;
+    outline: 0;
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+}
+.form button {
+    padding: 12px;
+    margin: 12px;
+    width: 350px;
+    text-align: center;
+    text-transform: capitalize;
+    border-radius: 10px;
+    background: black;
+    color: white;
+    outline: 0;
+    border: 0;
+}
+.message {
+    font-size: 17px;
+    margin: 12px;
+    color: white;
+}
+.message a {
+    text-decoration: none;
+    color: brown;
+}
+.loginform-container {
+    border: 0.5px solid grey;
+    width: 400px;
+    text-align: center;
+    margin-left: 33%;
+    margin-top: 7%;
+    margin-bottom: 7%;
+    border-radius: 12px;
+    padding: 20px;
+    background: cadetblue;
+}
+.errors {
+    color: red;
+}
+.error_border {
+    border: 1px solid red;
+}
+.create-form {
+    border: 1px solid lightgrey;
+    width: 500px;
+    margin: 1px 35%;
+    border-radius: 7px;
+    padding: 7px 50px;
+    background-color: cadetblue;
+}
+.create-form > form > input {
+    margin: 5px;
+    padding: 12px;
+    border-radius: 6px;
+    border: 0;
+    outline: none;
+    width: 350px;
+}
+.create-form > form > label {
+    margin-left: 8px;
+    text-transform: capitalize;
+    font-size: 18px;
+}
+.btn-create {
+    padding: 12px;
+    background-color: black;
+    color: white;
+    margin: 6px;
+    outline: 0;
+    border: 0;
+    width: 350px;
+    text-transform: capitalize;
+    border-radius: 7px;
+}
+#header {
+    width: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 12px 20px;
+    margin-left: 200px;
+    box-shadow: lightgray;
+    background: #080808;
+    color: #e6e6e6;
+}
+.admin-logos {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 2px;
+}
+.admin-logos > form > input {
+    padding: 5px;
+    border: 0;
+    outline: 0;
+    border-radius: 5px;
+}
+.admin-bars i {
+    margin-right: 20px;
+    font-size: 22px;
+}
+.notifications {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 5px;
+}
+.admin-logout {
+    background: inherit;
+    border: 0;
+    outline: 0;
+    text-transform: capitalize;
+    font-weight: bold;
+    margin: 2px;
+    color: white;
+}
+aside {
+    background-color: #111111;
+    width: 200px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+}
+aside ul {
+    list-style-type: none;
+}
+aside ul li {
+    padding: 12px;
+    text-transform: capitalize;
+    font-size: 17px;
+}
+aside ul li a {
+    text-decoration: none;
+    color: white;
+}
+.table-container {
+    margin-left: 200px;
+    padding-left: 30px;
+    margin-top: 20px;
+    padding-top: 30px;
+    width: 82%;
+    position: relative;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-top: 10px;
+}
+table thead > tr > th {
+    padding: 12px;
+    text-align: left;
+    background-color: #080808;
+    color: #e6e6e6;
+}
+table tbody > tr > {
+    padding: 12px;
+    text-align: 12px;
+    border-bottom: 1px solid #efefef;
+    white-space: nowrap;
+}
+
+table tbody td {
+    border-bottom: 1px solid #efefef;
+    padding: 12px;
+    background-color: aquamarine;
+    transition: transform 0.5s;
+}
+table tbody td:hover {
+    transform: translateX(-2px);
+}
+.add-jobs {
+    background-color: black;
+    color: white;
+    padding: 5px;
+    position: absolute;
+    right: 3px;
+    outline: 0;
+    border: 0;
+    text-transform: capitalize;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    top: 5px;
+}
+.edit-button {
+    font-size: 16px;
+    text-decoration: none;
+}
+.delete-button {
+    color: red;
+    font-size: 16px;
+    background: inherit;
+    font-size: 22px;
+}
+.delete-button {
+    color: red;
+    font-size: 22px;
+
+    border: none;
+}
+.text-centerr {
+    text-align: center;
+}

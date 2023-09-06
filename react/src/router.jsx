@@ -6,6 +6,9 @@ import Notfound from './assets/views/Notfound'
 import DefaultLayout from './assets/components/DefaultLayout'
 import GuestLayout from './assets/components/GuestLayout'
 import Login from './assets/views/Login'
+import Users from './assets/views/Users'
+import Job from './assets/views/Jobs'
+import JobForm from './assets/views/JobForm'
 
 
 const router = createBrowserRouter([
@@ -22,6 +25,19 @@ children:[
     {
         path:'/dashboard',
         element:<Dashboard/>
+    },
+    {
+        path:'/users',
+        element:<Users/>
+    },
+    {
+        path:'/jobs',
+        element:<Job/>
+        
+    },
+    {
+        path: "/jobs/new",
+        element: <JobForm key="PostCreate" />,
     },
 ]
     },

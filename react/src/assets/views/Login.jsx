@@ -1,46 +1,57 @@
-import { useRef, useState } from "react"
-import axiosClient from "../../axiosClient"
-import { useStateContext } from "../../context/ContextProvider"
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import { useRef, useState } from "react";
 
-
-const Login = ()=>{
-const emailRef = useRef()
-const passwordRef = useRef()
-
-const [errors,setErrors]=useState(null)
-
-const{setUser,setToken}=useStateContext()
-const onSubmit = (ev)=>{
-ev.preventDefault()
-const payload= {
-    email:emailRef.current.value,
-    password:passwordRef.current.value
-}
-setErrors(null)
-axiosClient.post('/login',payload).then(({data})=>{
-    setUser(data)
-setToken(data)
-}).catch(err=>{
-    const response = err.response
-    if(response && response.status === 422){
-  console.log(response.data.errors)
-  if(response.data.errors){
-  setErrors(response.data.errors)
-}
-else{
-    setErrors({
-        email:[response.data.message]
-    })
-}
-    }
-})
-
-}
-
-
+import { useStateContext } from "../../context/ContextProvider";
+import axiosClient from "../../axiosClient";
+const Login = () => {
+    const emailRef = useRef();
+    const passworRef = useRef();
+    const [errors, setErrors] = useState();
+    const { setUser, setToken } = useStateContext();
+    const onsubmit = (e) => {
+        e.preventDefault();
+        const payload = {
+            email: emailRef.current.value,
+            //email: emailRef.current.value,
+            password: passworRef.current.value,
+        };
+        //console.log(payload);
+        setErrors(null);
+        // axiosClient
+        //     .post("/login", payload)
+        //     .then(({ data }) => {
+        //         setUser(data.user);
+        //         setToken(data.token);
+        //         // router.navigate("/admin/users");
+        //     })
+        //     .catch((err) => {
+        //         const response = err.response;
+        //         if (response && response.status === 422) {
+        //             //console.log(response.data.errors);
+        //             setErrors(response.data.errors);
+        //         }
+        //     });
+        axiosClient
+            .post("/login", payload)
+            .then(({ data }) => {
+                setUser(data.user);
+                setToken(data.token);
+            })
+            .catch((err) => {
+                const response = err.response;
+                if (response && response.status === 422) {
+                    //console.log(response.data.errors);
+                    if (response.data.errors) {
+                        setErrors(response.data.errors);
+                    } else {
+                        setErrors({
+                            email: [response.data.message],
+                        });
+                    }
+                }
+            });
+    };
     return (
-
         <div className="login-signup-form animated fadeInDown">
             <div className="form">
                 {errors && (
@@ -54,7 +65,7 @@ else{
                 <form onSubmit={onsubmit}>
                     <input ref={emailRef} type="email" placeholder="email" />
                     <input
-                        ref={passwordRef}
+                        ref={passworRef}
                         type="password"
                         placeholder="password"
                     />
@@ -65,7 +76,6 @@ else{
                 </form>
             </div>
         </div>
-          
-    )
-}
-export default Login
+    );
+};
+export default Login;
