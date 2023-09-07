@@ -38,8 +38,8 @@ export const menu =[
           },
           {
             id: 4,
-            title: "Posts",
-            url: "/posts",
+            title: "Applicants",
+            url: "/applicants",
             icon: <FaPodcast/>,
           },
         ]

@@ -38,7 +38,7 @@ const Job = () => {
                     justifyContent: "space-between",
                 }}
             >
-                <h3>posts</h3>
+                <h3 style={{color:'white'}}>posts</h3>
 
                 <Link to="/jobs/new" className="btn btn-edit">
                     add jobs

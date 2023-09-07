@@ -17,20 +17,7 @@ const Login = () => {
         };
         //console.log(payload);
         setErrors(null);
-        // axiosClient
-        //     .post("/login", payload)
-        //     .then(({ data }) => {
-        //         setUser(data.user);
-        //         setToken(data.token);
-        //         // router.navigate("/admin/users");
-        //     })
-        //     .catch((err) => {
-        //         const response = err.response;
-        //         if (response && response.status === 422) {
-        //             //console.log(response.data.errors);
-        //             setErrors(response.data.errors);
-        //         }
-        //     });
+        
         axiosClient
             .post("/login", payload)
             .then(({ data }) => {
@@ -70,9 +57,9 @@ const Login = () => {
                         placeholder="password"
                     />
                     <button className="btn btn-block">Login</button>
-                    <p className="message">
+                    {/* <p className="message">
                         NotRegisterd?<Link to="/signup">Register</Link>
-                    </p>
+                    </p> */}
                 </form>
             </div>
         </div>

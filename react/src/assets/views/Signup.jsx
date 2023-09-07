@@ -1,12 +1,8 @@
 import { Link } from "react-router-dom";
 import { useRef, useState } from "react";
-
-//import { useHistory } from "react-router-dom"
 import { useNavigate } from "react-router-dom";
 import axiosClient from "../../axiosClient";
 import { useStateContext } from "../../context/ContextProvider";
-
-
 const SignUp = () => {
     const nameRef = useRef();
     const emailRef = useRef();
@@ -38,18 +34,7 @@ const SignUp = () => {
                 }
             });
 
-        // axiosClient
-        //     .post("/signup", payload)
-        //     .then(({ data }) => {
-        //         setUser(data.user);
-        //         setToken(data.token);
-        //     })
-        //     .catch((err) => {
-        //         const response = err.response;
-        //         if (response && response.status === 422) {
-        //             console.log(response.data.errors);
-        //         }
-        //     });
+       
     };
     return (
         <div className="login-signup-form animated fadeInDown">

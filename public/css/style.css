@@ -213,8 +213,9 @@ nav {
 .job-desc {
     font-size: 18px;
     margin: 30px;
-    padding: 20px 50px;
-    border: 1px solid black;
+    padding: 20px 80px;
+    border: 0.5px solid lightgray;
+    color: rgba(0, 0, 0, 0.6);
 }
 .contact-desc {
     margin: 12px;

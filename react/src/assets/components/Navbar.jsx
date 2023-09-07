@@ -27,7 +27,7 @@ return <div className="navbar">
         <FaBell/>
         <FaEnvelope/>
         <div className="user">
-        <a onClick={onLogout} className="btn-logout" href="#">Logout</a>
+        <a onClick={onLogout} style={{color:"white",textDecoration:"none"}} className="btn-logout" href="#">Logout</a>
         </div>
     </div>
 </div>

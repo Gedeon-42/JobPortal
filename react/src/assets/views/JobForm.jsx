@@ -16,7 +16,7 @@ const JobForm = () => {
         company: "",
         website: "",
         image_url: null,
-        tags: false,
+        tags: "",
         email: "",
     });
     const descriptionRef = useRef();
@@ -95,7 +95,7 @@ const JobForm = () => {
     };
     return (
         <div>
-            {!id ? <h3>add new post</h3> : <h3>update:{jobs.title}</h3>}
+            {!id ? <h3 style={{color:'white'}}>add new post</h3> : <h3>update:{jobs.title}</h3>}
             <div className="card animated fadeInDown ">
                 {loading && <p>loading...</p>}
                 {errors && (
@@ -165,7 +165,7 @@ const JobForm = () => {
                                 onChange={onImagechoose}
                                 className="img_choosee"
                             />{" "}
-                            choose image
+                    
                         </div>
                         {
                             <input

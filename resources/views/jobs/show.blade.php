@@ -18,7 +18,12 @@
 <div class="description">
     <h1 class="text-center">about job</h1>
     <div class="job-desc">
-      <p>{{ $listing->description }}</p>
+      <p>
+
+      {!!html_entity_decode($listing->description)!!}
+      </p>
+      
+
     </div>
     <div class="contact-desc">
       <a href="/" class="mail-link">back</a>
