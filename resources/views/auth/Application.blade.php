@@ -4,8 +4,8 @@
         <div class="create-form">
             <form action="application" method="post" enctype="multipart/form-data">
              @csrf
-            <label for="title">job title:</label><br>
-            <input type="text" class="@error('names') error_border @enderror" name="names" value="{{ old('names') }}" placeholder="title" ><br>
+            <label for="title">Full name:</label><br>
+            <input type="text" class="@error('names') error_border @enderror" name="names" value="{{ old('names') }}" placeholder="Full name" ><br>
             @error('names')
                 <p class="errors">
                     {{ $message }}
@@ -44,7 +44,7 @@
             <input type="file" name="diploma" placeholder="logo"><br>
             <label for="description">job description</label><br>
             
-            <button type="submit" class="btn-create"> add job </button>
+            <button type="submit" class="btn-create"> apply</button>
             </form>
         </div>
     </div>

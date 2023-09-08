@@ -186,7 +186,7 @@ const JobForm = () => {
                             config={config}
                         />
                         <input
-                            placeholder=" tags"
+                            placeholder=" number of post"
                             value={jobs.tags}
                             onChange={(ev) =>
                                 setjobs({

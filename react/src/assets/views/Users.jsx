@@ -55,7 +55,7 @@ const Users = () => {
                             <th>full name</th>
                             <th>email</th>
                             <th>created_at</th>
-                            <th>action</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -75,21 +75,8 @@ const Users = () => {
                                     <td>{u.name}</td>
                                     <td>{u.email}</td>
                                     <td>{u.created_at}</td>
-                                    <td>
-                                        <Link
-                                            className="btn btn-edit"
-                                            to={"/admin/users/" + u.id}
-                                        >
-                                            edit
-                                        </Link>
-                                        &nbsp;
-                                        <button
-                                            onClick={(e) => ondelete(u)}
-                                            className="btn-delete"
-                                        >
-                                            delete
-                                        </button>
-                                    </td>
+                                    
+                                    
                                 </tr>
                             ))}
                         </tbody>

@@ -29,12 +29,12 @@ Route::get('/admin/listings/create',[JobController::class,'create'])->name('list
 Route::get('/Register',[RegisterController::class,'index'])->name('auth.Register');
 Route::post('/Register',[RegisterController::class,'store'])->name('auth.Register');
 
-Route::get('/Login',[LoginController::class,'index'])->name('auth.Login');
+Route::get('/Login',[LoginController::class,'index'])->name('login');
 Route::post('/Login',[LoginController::class,'store'])->name('auth.Login');
 
 Route::post('/Logout',[RegisterController::class,'logout'])->name('auth.logout');
 
- Route::get('/application',[ApplicantController::class,'index'])->name('/application');
+ Route::get('/application',[ApplicantController::class,'index'])->name('/application')->middleware('auth');
  Route::post('/application',[ApplicantController::class,'store'])->name('/application');
 
 Route::get('/employer/application',[EmployerController::class,'index'])->name('/employer/application');

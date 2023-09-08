@@ -10,6 +10,7 @@ import Users from './assets/views/Users'
 import Job from './assets/views/Jobs'
 import JobForm from './assets/views/JobForm'
 import Employers from './assets/views/Employers'
+import Applicant from './assets/views/Applicant'
 
 
 const router = createBrowserRouter([
@@ -21,7 +22,7 @@ element:<DefaultLayout/>,
 children:[
     {
         path:'/',
-        element:<Navigate to='/dashboard'/>
+        element:<Navigate to='/jobs'/>
     },
     {
         path:'/dashboard',
@@ -43,6 +44,15 @@ children:[
     {
         path:'/employers',
         element:<Employers/>
+        
+    },
+    {
+        path: "/employers/new",
+        element: <JobForm key="PostCreate" />,
+    },
+    {
+        path:'/applicants',
+        element:<Applicant/>
         
     },
     {

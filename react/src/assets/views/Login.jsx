@@ -57,9 +57,9 @@ const Login = () => {
                         placeholder="password"
                     />
                     <button className="btn btn-block">Login</button>
-                    {/* <p className="message">
+                    <p className="message">
                         NotRegisterd?<Link to="/signup">Register</Link>
-                    </p> */}
+                    </p>
                 </form>
             </div>
         </div>
