@@ -12,10 +12,7 @@ import JobForm from './assets/views/JobForm'
 import Employers from './assets/views/Employers'
 import Applicant from './assets/views/Applicant'
 
-
 const router = createBrowserRouter([ 
-
-
     {
 path:'/',
 element:<DefaultLayout/>,

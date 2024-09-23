@@ -22,9 +22,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
-
     Route::apiResource('/users', UserController::class);
-    Route::apiResource('/jobs', JobController::class);
+     Route::apiResource('/jobs', JobController::class);
 });
 
 Route::post('/signup', [AuthController::class, 'signup']);

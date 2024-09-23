@@ -60,6 +60,7 @@ class JobController extends Controller
         return new JobResource($job);
     }
 
+
     /**
      * Update the specified resource in storage.
      *
@@ -67,7 +68,7 @@ class JobController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateJobRequest $request,Job $post)
+    public function update(UpdateJobRequest $request,Job $job)
     {
         //
         $data = $request->validated();

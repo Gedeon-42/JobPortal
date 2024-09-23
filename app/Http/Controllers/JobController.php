@@ -16,6 +16,7 @@ class JobController extends Controller
             'listings'=>$listings
         ]);
     }
+    
     public function show(Job $listing){
 
         return view('jobs.show',[
@@ -37,6 +38,7 @@ class JobController extends Controller
     'company'=>'required',
     'email'=>'required|email',
     'location'=>'required',
+    
     'website'=>'required',
     'tags'=>'required',
     'description'=>'required',
@@ -52,6 +54,7 @@ class JobController extends Controller
         return view('listings.edit',[
             'listing'=>$listing
         ]);
+
     }
     public function update(Request $request,Job $listing){
         $formdata = $request->validate([

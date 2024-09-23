@@ -8,9 +8,9 @@ import axiosClient from "../../axiosClient"
 const DefaultLayout = ()=>{
 
     const{user,token,setUser} = useStateContext()
-    if(!token){
-        return <Navigate to='/login'/>
-    }
+    // if(!token){
+    //     return <Navigate to='/login'/>
+    // }
     useEffect(() => {
         axiosClient.get('/user')
           .then(({data}) => {

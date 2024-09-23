@@ -12,4 +12,5 @@ const GuestLayout = ()=>{
         </div>
     )
 }
+
 export default GuestLayout

@@ -11,6 +11,7 @@
                     {{ $message }}
                 </p>
             @enderror
+            
             <label for="company">company name:</label><br>
             <input type="text" class="@error('company') error_border @enderror" name="company" value="{{ old('company') }}" placeholder="company"><br>
             @error('company')
@@ -51,6 +52,7 @@
             <label for="description">job description</label><br>
             <textarea  name="description" id="" cols="40" rows="10px"></textarea><br>
             @error('description')
+            
             <p class="errors">
                 {{ $message }}
             </p>
