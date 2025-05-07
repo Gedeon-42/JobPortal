@@ -41,6 +41,7 @@ class AuthController extends Controller
         return response(compact('user', 'token'));
     }
     
+    
     public function logout(Request $request)
     {
         /** @var \App\Models\User $user */

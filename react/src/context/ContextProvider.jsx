@@ -26,6 +26,7 @@ export const ContextProvider = ({ children }) => {
     const [isClicked, setIsClicked] = useState(initialState);
 
     // const [surveys, setSurveys] = useState(tmpSurveys);
+    
 
     const setToken = (token) => {
         _setToken(token);

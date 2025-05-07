@@ -2,13 +2,16 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import Courses from './assets/views/Courses'
+import Accordion from './assets/views/Accordion'
 
 function App() {
 
 
   return (
  <>
- <h1> welcome to my Vite project</h1>
+ <Courses/>
+ <Accordion/>
  </>
   )
 }
